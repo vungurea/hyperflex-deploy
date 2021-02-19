@@ -17,7 +17,7 @@ hx_system_name = "hx_cluster2-edge"
 hx_deployment_type = "EDGE"
 
 # Replication factor
-replication: 2
+replication = 2
 
 # HX Cluster Management IP
 mgmt_ip_address = "10.21.0.10"
@@ -114,32 +114,32 @@ ip_range_data = {
 }
 
 
-"hx_node_profiles" = {
+hx_node_profiles = {
     # define here all your HX Nodes
     # Note: key name will be used as a suffix in the nodes hostname
     "-esx-1" = {
-        "node_cimc_ip_address" : "10.21.0.31"
+        "node_serial_number"   : "NODE1_SERIAL"
         "hxdp_data_ip"         : "10.22.0.91"
         "hxdp_mgmt_ip"         : "10.21.0.91"
         "hypervisor_data_ip"   : "10.22.0.61"
         "hypervisor_mgmt_ip"   : "10.21.0.61"
     }
     "-esx-2" = {
-        "node_cimc_ip_address" : "10.21.0.32"
+        "node_serial_number"   : "NODE2_SERIAL"
         "hxdp_data_ip"         : "10.22.0.92"
         "hxdp_mgmt_ip"         : "10.21.0.92"
         "hypervisor_data_ip"   : "10.22.0.62"
         "hypervisor_mgmt_ip"   : "10.21.0.62"
     }
     "-esx-3" = {
-        "node_cimc_ip_address" : "10.21.0.33"
+        "node_serial_number"   : "NODE3_SERIAL"
         "hxdp_data_ip"         : "10.22.0.93"
         "hxdp_mgmt_ip"         : "10.21.0.93"
         "hypervisor_data_ip"   : "10.22.0.63"
         "hypervisor_mgmt_ip"   : "10.21.0.63"
     }
     "-esx-4" = {
-        "node_cimc_ip_address" : "10.21.0.34"
+        "node_serial_number"   : "NODE4_SERIAL"
         "hxdp_data_ip"         : "10.22.0.94"
         "hxdp_mgmt_ip"         : "10.21.0.94"
         "hypervisor_data_ip"   : "10.22.0.64"

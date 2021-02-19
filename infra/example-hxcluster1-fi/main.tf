@@ -18,8 +18,8 @@
 
 provider "intersight" {
     apikey    = var.apikey
-    secretkeyfile = var.secretkeyfile
-    endpoint = "intersight.com"
+    secretkey = var.secretkeyfile
+    endpoint  = "intersight.com"
 }
 
 module "hyperflex_profile" {

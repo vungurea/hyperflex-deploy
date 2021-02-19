@@ -38,7 +38,7 @@ Create your cluster configuration by copying one of the included examples. Depen
     cd infra/my_new_hxcluster
     mv hxcluster1.auto.tfvars my_new_hxcluster.auto.tfvars
 
-Edit the new my_new_hxcluster.auto.tfvars. Those should be the only file in which you describe your cluster parameters. Go through all the values carefully and make sure you don't forget to change any of the parameters. Some values cannot be changed after a cluster is deployed and will require a complete cluster reinstallation.
+Edit the variables file `my_new_hxcluster.auto.tfvars`. This should be the only file in which you describe the parameters for your cluster. Go through all the values carefully and make sure you don't forget to change any of the parameters. Some values cannot be changed after a cluster is deployed and will require a complete cluster reinstallation.
 
 Create an apikey in intersight. Save the private key to a local file and then set the apikey and the path to the private key to the following environment variables:
 

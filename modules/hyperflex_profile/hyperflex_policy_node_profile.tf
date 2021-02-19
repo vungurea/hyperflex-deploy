@@ -16,7 +16,7 @@
 
 data "intersight_compute_rack_unit" "hx-node" {
     for_each    = var.hx_node_profiles
-    mgmt_ip_address = each.value.node_cimc_ip_address
+    serial      = each.value.node_serial_number
 }
 
 resource "intersight_hyperflex_node_profile" "hx-node-profile-node" {
