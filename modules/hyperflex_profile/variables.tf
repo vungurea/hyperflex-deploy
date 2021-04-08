@@ -18,6 +18,7 @@
 
 variable "org_name" {
     type    = string
+    default = null
 }
 
 variable "cluster_profile_action" {
