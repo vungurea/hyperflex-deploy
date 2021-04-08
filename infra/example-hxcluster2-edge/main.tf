@@ -140,28 +140,28 @@ module "hyperflex_profile" {
         # define here all your HX Nodes
         # Note: key name will be used as a suffix in the nodes hostname
         "-esx-1" = {
-            "node_serial_number"   : "NODE1_SERIAL"
+            "mgmt_ip_address"      : "10.21.0.31"
             "hxdp_data_ip"         : "10.22.0.91"
             "hxdp_mgmt_ip"         : "10.21.0.91"
             "hypervisor_data_ip"   : "10.22.0.61"
             "hypervisor_mgmt_ip"   : "10.21.0.61"
         }
         "-esx-2" = {
-            "node_serial_number"   : "NODE2_SERIAL"
+            "mgmt_ip_address"      : "10.21.0.32"
             "hxdp_data_ip"         : "10.22.0.92"
             "hxdp_mgmt_ip"         : "10.21.0.92"
             "hypervisor_data_ip"   : "10.22.0.62"
             "hypervisor_mgmt_ip"   : "10.21.0.62"
         }
         "-esx-3" = {
-            "node_serial_number"   : "NODE3_SERIAL"
+            "mgmt_ip_address"      : "10.21.0.33"
             "hxdp_data_ip"         : "10.22.0.93"
             "hxdp_mgmt_ip"         : "10.21.0.93"
             "hypervisor_data_ip"   : "10.22.0.63"
             "hypervisor_mgmt_ip"   : "10.21.0.63"
         }
         "-esx-4" = {
-            "node_serial_number"   : "NODE4_SERIAL"
+            "mgmt_ip_address"      : "10.21.0.34"
             "hxdp_data_ip"         : "10.22.0.94"
             "hxdp_mgmt_ip"         : "10.21.0.94"
             "hypervisor_data_ip"   : "10.22.0.64"
