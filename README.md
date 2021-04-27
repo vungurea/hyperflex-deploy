@@ -10,7 +10,7 @@ _Deploy your HyperFlex Clusters using this terraform module and Intersight_
 ---
 
 * `Terraform 0.13+`
-* Provider: `intersight >= 1.0.4` (provider fetched automatically on terraform init)
+* Provider: `intersight >= 1.0.6` (provider fetched automatically on terraform init)
 
 ## Features
 ---
