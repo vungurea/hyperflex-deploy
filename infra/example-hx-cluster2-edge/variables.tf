@@ -14,11 +14,12 @@
 # or implied.
 
 
-terraform {
-  required_providers {
-    intersight = {
-      source  = "CiscoDevNet/intersight"
-      version = ">= 1.0.4"
-    }
-  }
+# Module variables definition starts here
+
+variable "apikey" {
+  type = string
+}
+
+variable "secretkeyfile" {
+  type = string
 }

@@ -15,31 +15,30 @@
 
 
 data "intersight_compute_rack_unit" "hx-node" {
-    for_each    = var.hx_node_profiles
-    mgmt_ip_address = each.value.node_cimc_ip_address
+  for_each        = var.hx_node_profiles
+  mgmt_ip_address = each.value.node_cimc_ip_address
 }
 
 resource "intersight_hyperflex_node_profile" "hx-node-profile-node" {
-    for_each    = var.hx_node_profiles
-    
-    name        = "${var.hx_system_name}${each.key}"
-    description = "terraform - Hyperflex Node Profile node1"
+  for_each = var.hx_node_profiles
 
-    hxdp_data_ip = each.value.hxdp_data_ip
-    hxdp_mgmt_ip = each.value.hxdp_mgmt_ip
-    hypervisor_data_ip = each.value.hypervisor_data_ip
-    hypervisor_mgmt_ip = each.value.hypervisor_mgmt_ip
+  name        = "${var.hx_system_name}${each.key}"
+  description = "terraform - Hyperflex Node Profile node${each.key}"
 
-    assigned_server {
-        object_type = "compute.RackUnit"
-        moid = data.intersight_compute_rack_unit.hx-node[each.key].moid
-    }
+  hxdp_mgmt_ip       = each.value.hxdp_mgmt_ip
+  hypervisor_data_ip = each.value.hypervisor_data_ip
+  hypervisor_mgmt_ip = each.value.hypervisor_mgmt_ip
 
-    cluster_profile {
-        moid = intersight_hyperflex_cluster_profile.hxlab-cluster_profile.moid
-    }
-    
-    lifecycle {
-        ignore_changes = [tags,description]
-    }
+  assigned_server {
+    object_type = "compute.RackUnit"
+    moid        = data.intersight_compute_rack_unit.hx-node[each.key].moid
+  }
+
+  cluster_profile {
+    moid = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
+
+  lifecycle {
+    ignore_changes = [tags, description]
+  }
 }

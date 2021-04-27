@@ -15,5 +15,5 @@
 
 
 data "intersight_organization_organization" "intersight_organization" {
-    name = var.org_name
+  name = var.org_name
 }

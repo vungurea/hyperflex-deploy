@@ -15,18 +15,18 @@
 
 
 resource "intersight_hyperflex_auto_support_policy" "hx-auto-support-policy" {
-    name        = "${var.hx_system_name}-auto-support-policy"
-    description = "terraform - Hyperflex Auto Support Policy"
+  name        = "${var.hx_system_name}-auto-support-policy"
+  description = "terraform - Hyperflex Auto Support Policy"
 
-    admin_state               = var.auto_support_enabled
-    service_ticket_receipient = var.auto_support_email
+  admin_state               = var.auto_support_enabled
+  service_ticket_receipient = var.auto_support_email
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
 
-    lifecycle {
-        ignore_changes = [tags]
-    }
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }

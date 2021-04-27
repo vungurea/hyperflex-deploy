@@ -15,22 +15,22 @@
 
 
 resource "intersight_hyperflex_cluster_storage_policy" "hx-cluster-storage-policy" {
-    name        = "${var.hx_system_name}-cluster-storage-policy"
-    description = "terraform - Hyperflex Cluster Storage Policy"
+  name        = "${var.hx_system_name}-cluster-storage-policy"
+  description = "terraform - Hyperflex Cluster Storage Policy"
 
-    disk_partition_cleanup = var.disk_partition_cleanup
-    vdi_optimization       = var.vdi_optimization
+  disk_partition_cleanup = var.disk_partition_cleanup
+  vdi_optimization       = var.vdi_optimization
 
-    logical_avalability_zone_config {
-        auto_config = var.laz_auto_config
-    }
+  logical_avalability_zone_config {
+    auto_config = var.laz_auto_config
+  }
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
 
-    lifecycle {
-        ignore_changes = [tags]
-    }
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }

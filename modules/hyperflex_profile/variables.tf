@@ -17,154 +17,151 @@
 # Module variables definition starts here
 
 variable "org_name" {
-    type    = string
-    default = null
+  type    = string
+  default = null
 }
 
 variable "cluster_profile_action" {
-    type    = string
+  type = string
 }
 
 variable "hx_system_name" {
-    type    = string
+  type = string
 }
 
 variable "hx_deployment_type" {
-    type    = string
+  type = string
 }
 
 variable "replication" {
-    type    = number
+  type = number
 }
 
 variable "server_firmware_version" {
-    type    = string
+  type = string
 }
 
 variable "hxdp_version" {
-    type    = string
+  type = string
 }
 
 variable "mgmt_ip_address" {
-    type    = string
+  type = string
 }
 
 variable "data_ip_address" {
-    type    = string
+  type    = string
+  default = "169.254.204.1"
 }
 
 variable "dns_servers" {
-    type    = list(string)
+  type = list(string)
 }
 
 variable "ntp_servers" {
-    type    = list(string)
+  type = list(string)
 }
 
 variable "dns_domain_name" {
-    type    = string
+  type = string
 }
 
 variable "timezone" {
-    type    = string
+  type = string
 }
 
 variable "mac_pool_prefix" {
-    type    = string
+  type = string
 }
 
 variable "disk_partition_cleanup" {
-    type    = bool
+  type = bool
 }
 
 variable "vdi_optimization" {
-    type    = bool
+  type = bool
 }
 
 variable "laz_auto_config" {
-    type    = bool
+  type = bool
 }
 
 variable "auto_support_enabled" {
-    type    = bool
+  type = bool
 }
 
 variable "auto_support_email" {
-    type    = string
+  type = string
 }
 
 variable "vcenter_data_center" {
-    type    = string
+  type = string
 }
 
 variable "vcenter_hostname" {
-    type    = string
+  type = string
 }
 
 variable "vcenter_username" {
-    type    = string
+  type = string
 }
 
 variable "vcenter_password" {
-    type    = string
+  type = string
 }
 
 variable "jumbo_frames_enable" {
-    type    = bool
+  type = bool
 }
 
 variable "uplink_speed" {
-    type    = string
+  type = string
 }
 
 variable "vlan_id_mgmt" {
-    type    = number
+  type = number
 }
 
 variable "vlan_id_data" {
-    type    = number
+  type = number
 }
 
 variable "vlan_id_vmotion" {
-    type    = number
+  type = number
 }
 
 variable "vlan_id_vmnetwork" {
-    type    = number
+  type = number
 }
 
 variable "ip_range_kvm" {
-    type    = map
+  type = map(any)
 }
 
 variable "ip_range_mgmt" {
-    type    = map
+  type = map(any)
 }
 
 variable "ip_range_hxdp" {
-    type    = map
-}
-
-variable "ip_range_data" {
-    type    = map
+  type = map(any)
 }
 
 variable "hypervisor_admin_user" {
-    type    = string
+  type = string
 }
 
 variable "hypervisor_default_pwd" {
-    type    = bool
+  type = bool
 }
 
 variable "hypervisor_admin_pwd" {
-    type    = string
+  type = string
 }
 
 variable "hxdp_root_pwd" {
-    type    = string
+  type = string
 }
 
 variable "hx_node_profiles" {
-    type    = map
+  type = map(any)
 }

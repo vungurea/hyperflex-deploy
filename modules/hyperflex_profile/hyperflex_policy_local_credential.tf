@@ -15,20 +15,20 @@
 
 
 resource "intersight_hyperflex_local_credential_policy" "hx-local-credential-policy" {
-    name        = "${var.hx_system_name}-local-credential-policy"
-    description = "terraform - Hyperflex Local Credential Policy"
+  name        = "${var.hx_system_name}-local-credential-policy"
+  description = "terraform - Hyperflex Local Credential Policy"
 
-    hypervisor_admin = var.hypervisor_admin_user
-    factory_hypervisor_password = var.hypervisor_default_pwd
-    hypervisor_admin_pwd = var.hypervisor_admin_pwd
-    hxdp_root_pwd = var.hxdp_root_pwd
+  hypervisor_admin            = var.hypervisor_admin_user
+  factory_hypervisor_password = var.hypervisor_default_pwd
+  hypervisor_admin_pwd        = var.hypervisor_admin_pwd
+  hxdp_root_pwd               = var.hxdp_root_pwd
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
 
-    lifecycle {
-        ignore_changes = [tags,hypervisor_admin_pwd,hxdp_root_pwd]
-    }
+  lifecycle {
+    ignore_changes = [tags, hypervisor_admin_pwd, hxdp_root_pwd]
+  }
 }

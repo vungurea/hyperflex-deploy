@@ -14,19 +14,11 @@
 # or implied.
 
 
-resource "intersight_hyperflex_software_version_policy" "hx-software-version-policy" {
-  name        = "${var.hx_system_name}-software-version-policy"
-  description = "terraform - Hyperflex Software Version Policy"
-
-  hxdp_version            = var.hxdp_version
-  server_firmware_version = var.server_firmware_version
-
-  organization {
-    object_type = "organization.Organization"
-    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
-  }
-
-  lifecycle {
-    ignore_changes = [tags]
+terraform {
+  required_providers {
+    intersight = {
+      source  = "CiscoDevNet/intersight"
+      version = ">= 1.0.6"
+    }
   }
 }

@@ -15,20 +15,20 @@
 
 
 resource "intersight_hyperflex_vcenter_config_policy" "hx-vcenter-config-policy" {
-    name        = "${var.hx_system_name}-vcenter-config-policy"
-    description = "terraform - Hyperflex vCenter Configuration Policy"
+  name        = "${var.hx_system_name}-vcenter-config-policy"
+  description = "terraform - Hyperflex vCenter Configuration Policy"
 
-    data_center = var.vcenter_data_center
-    hostname    = var.vcenter_hostname
-    username    = var.vcenter_username
-    password    = var.vcenter_password
+  data_center = var.vcenter_data_center
+  hostname    = var.vcenter_hostname
+  username    = var.vcenter_username
+  password    = var.vcenter_password
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
 
-    lifecycle {
-        ignore_changes = [tags,password]
-    }
+  lifecycle {
+    ignore_changes = [tags, password]
+  }
 }

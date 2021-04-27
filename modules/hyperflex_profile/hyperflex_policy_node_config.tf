@@ -15,38 +15,31 @@
 
 
 resource "intersight_hyperflex_node_config_policy" "hx-node-config-policy" {
-    name        = "${var.hx_system_name}-node-config-policy"
-    description = "terraform - Hyperflex Node Configuration Policy"
+  name        = "${var.hx_system_name}-node-config-policy"
+  description = "terraform - Hyperflex Node Configuration Policy"
 
-    node_name_prefix = "${var.hx_system_name}-esx"
+  node_name_prefix = "${var.hx_system_name}-esx"
 
-    mgmt_ip_range {
-        start_addr = var.ip_range_mgmt.start_addr
-        end_addr   = var.ip_range_mgmt.end_addr
-        netmask    = var.ip_range_mgmt.netmask
-        gateway    = var.ip_range_mgmt.gateway
-    }
+  mgmt_ip_range {
+    start_addr = var.ip_range_mgmt.start_addr
+    end_addr   = var.ip_range_mgmt.end_addr
+    netmask    = var.ip_range_mgmt.netmask
+    gateway    = var.ip_range_mgmt.gateway
+  }
 
-    hxdp_ip_range {
-        start_addr = var.ip_range_hxdp.start_addr
-        end_addr   = var.ip_range_hxdp.end_addr
-        netmask    = var.ip_range_hxdp.netmask
-        gateway    = var.ip_range_hxdp.gateway
-    }
+  hxdp_ip_range {
+    start_addr = var.ip_range_hxdp.start_addr
+    end_addr   = var.ip_range_hxdp.end_addr
+    netmask    = var.ip_range_hxdp.netmask
+    gateway    = var.ip_range_hxdp.gateway
+  }
 
-    data_ip_range {
-        start_addr = var.ip_range_data.start_addr
-        end_addr   = var.ip_range_data.end_addr
-        netmask    = var.ip_range_data.netmask
-        gateway    = var.ip_range_data.gateway
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
-    
-    lifecycle {
-        ignore_changes = [tags]
-    }
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }

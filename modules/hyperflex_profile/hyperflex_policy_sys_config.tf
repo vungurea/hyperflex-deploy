@@ -15,20 +15,20 @@
 
 
 resource "intersight_hyperflex_sys_config_policy" "hx-sys-config-policy" {
-    name        = "${var.hx_system_name}-sys-config-policy"
-    description = "terraform - Hyperflex System Configuration Policy"
+  name        = "${var.hx_system_name}-sys-config-policy"
+  description = "terraform - Hyperflex System Configuration Policy"
 
-    timezone        = var.timezone
-    dns_domain_name = var.dns_domain_name
-    dns_servers     = var.dns_servers
-    ntp_servers     = var.ntp_servers
-    
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
-    
-    lifecycle {
-        ignore_changes = [tags]
-    }
+  timezone        = var.timezone
+  dns_domain_name = var.dns_domain_name
+  dns_servers     = var.dns_servers
+  ntp_servers     = var.ntp_servers
+
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }

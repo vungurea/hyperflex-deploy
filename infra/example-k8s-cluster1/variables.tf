@@ -17,9 +17,9 @@
 # Module variables definition starts here
 
 variable "apikey" {
-    type    = string
+  type = string
 }
 
 variable "secretkeyfile" {
-    type    = string
+  type = string
 }

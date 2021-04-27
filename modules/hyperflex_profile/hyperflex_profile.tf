@@ -15,63 +15,63 @@
 
 
 resource "intersight_hyperflex_cluster_profile" "hxlab-cluster_profile" {
-    name        = "${var.hx_system_name}-hyperflex"
-    description = "terraform - Hyperflex Cluster Profile"
+  name        = "${var.hx_system_name}-hyperflex"
+  description = "terraform - Hyperflex Cluster Profile"
 
-    action             = var.cluster_profile_action
-    
-    type               = "instance"
-    replication        = var.replication
-    mgmt_ip_address    = var.mgmt_ip_address
-    mgmt_platform      = var.hx_deployment_type
-    hypervisor_type    = "ESXi"
-    data_ip_address    = var.data_ip_address
-    mac_address_prefix = var.mac_pool_prefix
-    wwxn_prefix        = ""
+  action = var.cluster_profile_action
 
-    storage_data_vlan {
-        name    = "${var.hx_system_name}-data"
-        vlan_id = var.vlan_id_data
-    }
+  type               = "instance"
+  replication        = var.replication
+  mgmt_ip_address    = var.mgmt_ip_address
+  mgmt_platform      = var.hx_deployment_type
+  hypervisor_type    = "ESXi"
+  mac_address_prefix = var.mac_pool_prefix
+  wwxn_prefix        = ""
+  host_name_prefix   = "${var.hx_system_name}-hyperflex"
 
-    auto_support {
-        moid = intersight_hyperflex_auto_support_policy.hx-auto-support-policy.moid
-    }
+  storage_data_vlan {
+    name    = "${var.hx_system_name}-data"
+    vlan_id = var.vlan_id_data
+  }
 
-    cluster_network {
-        moid = intersight_hyperflex_cluster_network_policy.hx-cluster-network-policy.moid
-    }
+  auto_support {
+    moid = intersight_hyperflex_auto_support_policy.hx-auto-support-policy.moid
+  }
 
-    cluster_storage {
-        moid = intersight_hyperflex_cluster_storage_policy.hx-cluster-storage-policy.moid
-    }
+  cluster_network {
+    moid = intersight_hyperflex_cluster_network_policy.hx-cluster-network-policy.moid
+  }
 
-    local_credential {
-        moid = intersight_hyperflex_local_credential_policy.hx-local-credential-policy.moid
-    }
+  cluster_storage {
+    moid = intersight_hyperflex_cluster_storage_policy.hx-cluster-storage-policy.moid
+  }
 
-    node_config {
-        moid = intersight_hyperflex_node_config_policy.hx-node-config-policy.moid
-    }
+  local_credential {
+    moid = intersight_hyperflex_local_credential_policy.hx-local-credential-policy.moid
+  }
 
-    software_version {
-        moid = intersight_hyperflex_software_version_policy.hx-software-version-policy.moid
-    }
+  node_config {
+    moid = intersight_hyperflex_node_config_policy.hx-node-config-policy.moid
+  }
 
-    sys_config {
-        moid = intersight_hyperflex_sys_config_policy.hx-sys-config-policy.moid
-    }
+  software_version {
+    moid = intersight_hyperflex_software_version_policy.hx-software-version-policy.moid
+  }
 
-    vcenter_config {
-        moid = intersight_hyperflex_vcenter_config_policy.hx-vcenter-config-policy.moid
-    }
+  sys_config {
+    moid = intersight_hyperflex_sys_config_policy.hx-sys-config-policy.moid
+  }
 
-    organization {
-        object_type = "organization.Organization"
-        moid        = data.intersight_organization_organization.intersight_organization.moid
-    }
+  vcenter_config {
+    moid = intersight_hyperflex_vcenter_config_policy.hx-vcenter-config-policy.moid
+  }
 
-    lifecycle {
-        ignore_changes = [tags,host_name_prefix]
-    }
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.intersight_organization.results[0].moid
+  }
+
+  lifecycle {
+    ignore_changes = [tags, data_ip_address]
+  }
 }
